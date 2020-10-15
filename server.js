@@ -39,3 +39,11 @@ app.listen(3000, ()=>{
 app.get('/pokemon', (req, res) => {
     res.send(pokemon);
 });
+
+app.get('/pokemon/:index', (req, res) => { // :index can be anything
+    if (pokemon[req.params.index]) {
+        res.send((pokemon[req.params.index]))
+    } else {
+        res.send("can't find that pokemon")
+    }
+});
