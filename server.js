@@ -5,12 +5,10 @@ const pokemon = require('./models/pokemon.js'); //NOTE: it must start with ./ if
 
 
 app.get('/pokemon/:index', (req, res) => { // :index can be anything
-    if (pokemon[req.params.index]) {
-        res.send((pokemon[req.params.index]))
-    } else {
-        res.send("can't find that pokemon")
-    }
-});
+    res.render('show.ejs', { //second param must be an object
+        pokemon: pokemon[req.params.index] //there will be a variable available inside the ejs file called fruit, its value is fruits[req.params.index]
+    });
+});  
 
 // GET ==> Route to our homepage, and user can click on url to create a new fruit 
 app.get('/pokemon', (req, res) => {
