@@ -1,44 +1,8 @@
 const express = require('express');
 const app = express();//app is an object
 
-const pokemon = [
-    {
-      name: "Bulbasaur",
-      img: "http://img.pokemondb.net/artwork/bulbasaur.jpg"
-    },
-    {
-      name: "Ivysaur",
-      img: "http://img.pokemondb.net/artwork/ivysaur.jpg"
-    },
-    {
-      name: "Venusaur",
-      img: "http://img.pokemondb.net/artwork/venusaur.jpg"
-    },
-    {
-      name: "Charmander",
-      img: "http://img.pokemondb.net/artwork/charmander.jpg"
-    },
-    {
-      name: "Charizard",
-      img: "http://img.pokemondb.net/artwork/charizard.jpg"
-    },
-    {
-      name: "Squirtle",
-      img: "http://img.pokemondb.net/artwork/squirtle.jpg"
-    },
-    {
-      name: "Wartortle",
-      img: "http://img.pokemondb.net/artwork/wartortle.jpg"
-    }
-  ];
+const pokemon = require('./models/pokemon.js'); //NOTE: it must start with ./ if it's just a file, not an NPM package
 
-app.listen(3000, ()=>{
-    console.log("I am listening");
-});
-
-app.get('/pokemon', (req, res) => {
-    res.send(pokemon);
-});
 
 app.get('/pokemon/:index', (req, res) => { // :index can be anything
     if (pokemon[req.params.index]) {
@@ -46,4 +10,16 @@ app.get('/pokemon/:index', (req, res) => { // :index can be anything
     } else {
         res.send("can't find that pokemon")
     }
+});
+
+// GET ==> Route to our homepage, and user can click on url to create a new fruit 
+app.get('/pokemon', (req, res) => {
+    res.render('index.ejs', {
+        pokemon: pokemon //there will be a variable available inside the ejs file called pokemons, its value is pokemon[req.params.index]
+    }); // {} callback function
+    
+});
+
+app.listen(3000, ()=>{
+    console.log("I am listening");
 });
