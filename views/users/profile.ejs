@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title><%=user.name%>'s Profile Page</title>
+        <link rel="stylesheet" href="/css/app.css">
+    </head>
+    <body>
+        <h1><%=user.name%>'s Profile Page</h1>
+
+        <form action="/users/profile/<%=index%>?_method=PUT" method="POST">
+		<!--  NOTE: the form is pre-populated with values for the server-->
+		Name: <input type="text" name="name" value="<%=user.name%>"/><br/>
+		Username: <input type="text" name="username" value="<%=user.username%>"/><br/>
+        Password: <input type="text" name="password" value="<%=user.password%>"/><br/>
+        </form>
+        <!-- Add edit link here  -->    
+        <a href="/users/profile/<%=index%>/edit">Edit Profile</a>
+            <br><br>
+        <form action="/users/profile/<%=index%>?_method=DELETE" method="POST"> <!-- forms can only use GET or POST -->
+            <input type="submit" value="delete">
+        </form>    
+          
+    </body>
+</html>
