@@ -1,0 +1,19 @@
+body {
+    background-color: blue;
+    background-image: url(https://logos-world.net/wp-content/uploads/2020/05/Pokemon-Symbol.jpg);
+    background-size: contain; 
+    background-position: top;
+    display: inline-block;
+}
+
+a {
+    color: white; 
+}
+
+input {
+    background-color: red;
+}
+
+img {
+    margin: 15px; 
+}

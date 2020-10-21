@@ -2,6 +2,8 @@ const express = require('express');
 const app = express();
 const methodOverride = require('method-override');
 
+app.use(express.static('public'));
+
 app.use(methodOverride('_method'));
 
 app.use(express.urlencoded({ extended: true }));
