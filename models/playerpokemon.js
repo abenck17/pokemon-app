@@ -3,27 +3,22 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class Pokemon extends Model {
+  class PlayerPokemon extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      Pokemon.belongsTo(models.Trainer, {
-        // through: 'PlayerPokemon',
-        // foreignKey: 'pokemonId',
-        foreignKey: 'playerId'
-      });
+      // define association here
+    }
   };
-  };
-  Pokemon.init({
-    name: DataTypes.STRING,
-    img: DataTypes.STRING, 
+  PlayerPokemon.init({
     playerId: DataTypes.INTEGER,
+    pokemonId: DataTypes.INTEGER
   }, {
     sequelize,
-    modelName: 'Pokemon',
+    modelName: 'PlayerPokemon',
   });
-  return Pokemon;
+  return PlayerPokemon;
 };
